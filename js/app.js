@@ -22,12 +22,12 @@ function ViewModel() {
       //Foursquare API URL
       var fsUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20130815&ll=' + marker.position.lat + ',' + marker.position.lng + '&query=' + marker.title;
 
-      $.getJSON(fsUrl).done(function(marker) {
-          var data = marker.response.venues[0];
-          self.street = data.location.formattedAddress[0];
-          self.city = data.location.city;
-          self.state = data.location.state;
-          self.country = data.location.country;
+      $.getJSON(fsUrl, function(marker) {
+          this.data = marker.response.venues[0];
+          self.street = this.data.location.formattedAddress[0];
+          self.city = this.data.location.city;
+          self.state = this.data.location.state;
+          self.country = this.data.location.country;
           self.contentTwo = '<div>' +
           '<p> Address: </p>' +
           '<p>' + self.street + '</p>' +
@@ -35,12 +35,12 @@ function ViewModel() {
           '<p>' + self.state + '</p>' +
           '<p>' + self.country + '</p>' +
           '</div>';
-          
+
       }).fail(function(e) {
           // Handling Errors
           alert('Foursquare API could not be loaded');
       });
-      
+
       infowindow.setContent(self.contentOne + self.contentTwo);
       infowindow.open(map, marker);
       // Make sure the marker property is cleared if the infowindow is closed.
