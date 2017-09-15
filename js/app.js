@@ -18,7 +18,7 @@ function ViewModel() {
 
 
       clientID = 'RB3KVOZKCOUIIA2DICNFGG4VRIMTAIA1FS2GLPI4DD2E4NAY';
-      clientSecret = 'Z0P4H3YMUVXWR3KHLOZ0LPYDHCFEAFHKYGHHUBMOGBSPESGP';
+      clientSecret = 'EEVS0EM432XTXTQN32GXNS2FHF135D4LMRKVG1A4XDF1URUK';
       //Foursquare API URL
       var fsUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20130815&ll=' + marker.position.lat + ',' + marker.position.lng + '&query=' + marker.title;
 
