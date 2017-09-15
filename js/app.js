@@ -29,17 +29,19 @@ function ViewModel() {
           self.state = data.location.state;
           self.country = data.location.country;
           self.contentTwo = '<div>' +
+          '<p> Address: </p>' +
           '<p>' + self.street + '</p>' +
           '<p>' + self.city + '</p>' +
           '<p>' + self.state + '</p>' +
           '<p>' + self.country + '</p>' +
           '</div>';
+          infowindow.setContent(self.contentOne + self.contentTwo);
 
       }).fail(function(e) {
+          // Handling Errors
           alert('Foursquare API could not be loaded');
       });
 
-      infowindow.setContent(self.contentOne + self.contentTwo);
       infowindow.open(map, marker);
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick',function() {
