@@ -20,4 +20,4 @@ The JavaScript folder(js) contains:
 The map contains some hangout locations that you will enjoy visiting. These locations are located in Visakhapatnam, Andhra Pradesh, India.
 
 ### Run the application
-The application be run with the help of this [link]("https://cdn.rawgit.com/nikhilganta/Udacity-Project-8-Neighborhood-Map/5dfa1694/index.html")
+The application be run with the help of this [link]("https://cdn.rawgit.com/nikhilganta/Udacity-Project-8-Neighborhood-Map/3e5afde3/index.html")
