@@ -15,7 +15,7 @@ function ViewModel() {
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
       this.contentOne = '<h3>' + marker.title + '</h3>' + '<h4>(' + marker.type + ')</h4>';
-      infowindow.setContent(self.contentOne);
+      infowindow.setContent(self.contentOne + self.contentTwo);
 
       clientID = 'RB3KVOZKCOUIIA2DICNFGG4VRIMTAIA1FS2GLPI4DD2E4NAY';
       clientSecret = 'Z0P4H3YMUVXWR3KHLOZ0LPYDHCFEAFHKYGHHUBMOGBSPESGP';
