@@ -4,7 +4,7 @@ function ViewModel() {
   var self = this;
   // Creating a new blank array for all the listing markers.
   this.markers = [];
-  // this.list = [];
+
   this.searchBox = ko.observable("");
 
   // This function populates the infowindow when the marker is clicked. We'll only allow
@@ -16,12 +16,13 @@ function ViewModel() {
       infowindow.marker = marker;
       this.contentOne = '<h3>' + marker.title + '</h3>' + '<h4>(' + marker.type + ')</h4>';
 
-
+      // Foursquare clientID and clientSecret for operating Foursquare API Services
       clientID = 'RB3KVOZKCOUIIA2DICNFGG4VRIMTAIA1FS2GLPI4DD2E4NAY';
       clientSecret = 'EEVS0EM432XTXTQN32GXNS2FHF135D4LMRKVG1A4XDF1URUK';
       //Foursquare API URL
       var fsUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20130815&ll=' + marker.position.lat + ',' + marker.position.lng + '&query=' + marker.title;
 
+      // Foursquare API initialization
       $.getJSON(fsUrl, function(marker) {
           this.data = marker.response.venues[0];
           self.street = this.data.location.formattedAddress[0];
@@ -37,7 +38,7 @@ function ViewModel() {
           '</div>';
 
       }).fail(function(e) {
-          // Handling Errors
+          // Handling Errors when there is an error loading the API
           alert('Foursquare API could not be loaded');
       });
 
@@ -60,6 +61,14 @@ function ViewModel() {
     this.largeInfowindow = new google.maps.InfoWindow();
     this.bounds = new google.maps.LatLngBounds();
 
+    this.animationFunction  = function() {
+      self.populateInfoWindow(this, self.largeInfowindow);
+      this.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout((function() {
+          this.setAnimation(null);
+      }).bind(this), 2100);
+    };
+
     // The following group uses the location array to create an array of markers on initialize.
     for (var i = 0; i < locations.length; i++) {
       // Get the position from the location array.
@@ -81,13 +90,6 @@ function ViewModel() {
       // Push the marker to our array of markers.
       this.markers.push(this.marker);
 
-      this.animationFunction  = function() {
-        self.populateInfoWindow(this, self.largeInfowindow);
-        this.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout((function() {
-            this.setAnimation(null);
-        }).bind(this), 2100);
-      };
       // Create an onclick event to open an infowindow at each marker.
       this.marker.addListener('click', this.animationFunction);
 
@@ -100,8 +102,7 @@ function ViewModel() {
 
   this.initMap();
 
-  // This block appends our locations to a list using data-bind
-  // It also serves to make the filter work
+  // fitler the locations list and the markers on the map
   this.locationsList = ko.computed(function() {
       var result = [];
       for (var i = 0; i < this.markers.length; i++) {
@@ -113,7 +114,7 @@ function ViewModel() {
           } else {
               this.markers[i].setVisible(false);
           }
-      };
+      }
       return result;
   }, this);
 
