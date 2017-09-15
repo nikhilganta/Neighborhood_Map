@@ -24,10 +24,10 @@ function ViewModel() {
 
       $.getJSON(fsUrl).done(function(marker) {
           var data = marker.response.venues[0];
-          self.street = data.formattedAddress[0];
-          self.city = data.city;
-          self.state = data.state;
-          self.country = data.country;
+          self.street = data.location.formattedAddress[0];
+          self.city = data.location.city;
+          self.state = data.location.state;
+          self.country = data.location.country;
           self.contentTwo = '<div>' +
           '<p>' + self.street + '</p>' +
           '<p>' + self.city + '</p>' +
