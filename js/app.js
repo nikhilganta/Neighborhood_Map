@@ -20,7 +20,7 @@ function ViewModel() {
       clientID = 'RB3KVOZKCOUIIA2DICNFGG4VRIMTAIA1FS2GLPI4DD2E4NAY';
       clientSecret = 'Z0P4H3YMUVXWR3KHLOZ0LPYDHCFEAFHKYGHHUBMOGBSPESGP';
       //Foursquare API URL
-      var fsUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20130815&ll=' + marker.position.lat + ',' + marker.position.lng + '&query=' + marker.title;
+      var fsUrl = 'https://api.foursquare.com/v2/venues/search?client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20130815&ll=' + marker.lat + ',' + marker.lng + '&query=' + marker.title;
 
       $.getJSON(fsUrl).done(function(marker) {
           var data = marker.response.venues[0];
@@ -71,6 +71,8 @@ function ViewModel() {
         position: this.position,
         title: this.title,
         type: this.type,
+        lat: this.position.lat,
+        lng: this.position.lng,
         animation: google.maps.Animation.DROP,
         id: i
       });
