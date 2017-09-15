@@ -14,8 +14,8 @@ function ViewModel() {
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      infowindow.setContent('');
       this.contentOne = '<h3>' + marker.title + '</h3>' + '<h4>(' + marker.type + ')</h4>';
+      infowindow.setContent(self.contentOne);
 
       clientID = 'RB3KVOZKCOUIIA2DICNFGG4VRIMTAIA1FS2GLPI4DD2E4NAY';
       clientSecret = 'Z0P4H3YMUVXWR3KHLOZ0LPYDHCFEAFHKYGHHUBMOGBSPESGP';
@@ -34,8 +34,7 @@ function ViewModel() {
           '<p>' + self.state + '</p>' +
           '<p>' + self.country + '</p>' +
           '</div>';
-          infowindow.setContent(self.contentOne + self.contentTwo);
-      }).error(function(e) {
+      }).fail(function(e) {
           alert('Foursquare API could not be loaded');
       });
 
