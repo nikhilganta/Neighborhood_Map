@@ -1,3 +1,6 @@
+/* Array of marker location objects with thier methods as title, location which includes
+ lat and lng coordinates, type of place, and Foursquare unique ID for each location to
+ access thier data */
 var locations = [{
         title: 'Domino\'s Pizza',
         location: {

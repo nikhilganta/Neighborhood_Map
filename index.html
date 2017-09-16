@@ -7,33 +7,35 @@
     <title>Neighborhood Map Project</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/libs/bootstrap.min.css"> -->
 
   </head>
   <body>
     <div class="container">
-      <div class="locations-box">
+      <aside class="locations-box">
         <h1>Neighborhood Locations</h1>
-        <div>
-          <input id="searchBox" type="text" data-bind="textInput: searchBox, valueUpdate: 'afterkeydown'" placeholder="Search my Favorite Locations..."> <!-- data-bind="textInput: searchTerm, valueUpdate: 'afterkeydown'" -->
-        </div>
+        <section>
+          <input id="searchBox" type="text" data-bind="textInput: searchBox, valueUpdate: 'afterkeydown'" placeholder="Search my Favorite Locations...">
+        </section>
         <hr>
-        <div class="list">
+        <section class="list">
           <ul data-bind = "foreach: locationsList">
               <li data-bind = "text: title, click: $parent.animationFunction"><a></a></li>
           </ul>
-        </div>
-      </div>
+        </section>
+      </aside>
     </div>
-    <div id="map"></div>
+    <main>
+      <div id="map"></div>
+    </main>
 
-      <script async defer src="js/libs/knockout-3.4.2.js"></script>
-      <script async defer src="js/libs/jquery-3.2.1.min.js"></script>
+
+      <script src="js/libs/knockout-3.4.2.js"></script>
+      <script src="js/libs/jquery-3.2.1.min.js"></script>
       <script src="js/markers.js"></script>
       <script src="js/mapstyles.js"></script>
       <script src="js/app.js"></script>
       <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu8GkdyWBN7ygkAJIhgVFFWEgeskTNj3E&v=3&callback=startApp">
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu8GkdyWBN7ygkAJIhgVFFWEgeskTNj3E&v=3&callback=startApp" onerror="googleMapsError()">
       </script>
   </body>
 </html>

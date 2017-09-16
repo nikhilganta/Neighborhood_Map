@@ -25,10 +25,10 @@ function ViewModel() {
             // Foursquare API initialization
             $.getJSON(fsUrl, function(marker) {
                 var data = marker.response.venue;
-                self.street = data.location.formattedAddress[0];
-                self.city = data.location.city;
-                self.state = data.location.state;
-                self.country = data.location.country;
+                self.street = data.location.formattedAddress[0] || 'No street provided';
+                self.city = data.location.city || 'No city provided';
+                self.state = data.location.state || 'No location provided';
+                self.country = data.location.country || 'No country provided';
                 self.contentTwo = '<div>' +
                     '<p> Address: </p>' +
                     '<p>' + self.street + '</p>' +
@@ -78,7 +78,6 @@ function ViewModel() {
             this.position = locations[i].location;
             this.type = locations[i].type;
             this.fsID = locations[i].fsID;
-            // this.list.push(locations[i].title);
 
             // Create a marker per location, and put into markers array.
             this.marker = new google.maps.Marker({
@@ -121,6 +120,10 @@ function ViewModel() {
     }, this);
 
 }
+
+googleMapsError = function() {
+    alert('Google Maps didn\'t load properly. Please refresh the page');
+};
 
 function startApp() {
     ko.applyBindings(new ViewModel());
