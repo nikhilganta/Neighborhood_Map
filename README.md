@@ -37,3 +37,4 @@ Once you have run the app, you must see my neighborhood map in which you can sea
 ### Attributions
 - [Google Maps API]('https://developers.google.com/maps/')
 - [Foursquare API]('https://developer.foursquare.com/')
+- [Wikipedia API]('https://www.mediawiki.org/wiki/API:Main_page')
